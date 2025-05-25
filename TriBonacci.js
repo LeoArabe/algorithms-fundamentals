@@ -1,7 +1,7 @@
 // Well met with Fibonacci bigger brother, AKA Tribonacci.
 
-// As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the 
-// sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying 
+// As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the
+// sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying
 // to pronounce it :(
 
 // So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
@@ -11,32 +11,32 @@
 const starTribonacci = [1, 1, 1];
 
 function tribonacci(signature, n) {
-    if (n <= 3) return signature.slice(0, n);
+  if (n <= 3) return signature.slice(0, n);
 
-    let recursive = n - 3;
+  let recursive = n - 3;
 
-    while (recursive > 0) {
-        let tribonacciNum = signature.at(-1) + signature.at(-2) + signature.at(-3);
-        signature.push(tribonacciNum);
-        recursive--
-    }
+  while (recursive > 0) {
+    let tribonacciNum = signature.at(-1) + signature.at(-2) + signature.at(-3);
+    signature.push(tribonacciNum);
+    recursive--;
+  }
 
-    return signature;
+  return signature;
 }
 
 console.log(tribonacci(starTribonacci, 10));
 
-// Solução refatorada chatgpt
 // function tribonacci(signature, n) {
-//     if (n <= 3) return signature.slice(0, n);
+//     if (n <= 3) return signature.slice(0, n); // Se n for pequeno, retorna os primeiros valores
 
+//     const tribonacciFinal = [...signature]; // Copia para evitar modificar o array original
 //     let recursive = n - 3;
 
 //     while (recursive > 0) {
-//         let tribonacciNum = signature.at(-1) + signature.at(-2) + signature.at(-3);
-//         signature.push(tribonacciNum);
+//         let nextNum = tribonacciFinal.slice(-3).reduce((a, b) => a + b, 0); // Soma os últimos 3
+//         tribonacciFinal.push(nextNum);
 //         recursive--;
 //     }
 
-//     return signature;
+//     return tribonacciFinal;
 // }
